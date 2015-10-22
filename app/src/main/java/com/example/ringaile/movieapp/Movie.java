@@ -1,10 +1,12 @@
 package com.example.ringaile.movieapp;
 
+import java.io.Serializable;
+
 /**
  * Created by ringaile on 21/10/15.
  * Generated with http://www.jsonschema2pojo.org
  */
-public class Movie {
+public class Movie implements Serializable {
 
     private String theaterId;
     private String theaterName;

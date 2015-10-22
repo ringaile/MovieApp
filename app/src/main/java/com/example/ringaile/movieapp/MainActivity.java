@@ -1,5 +1,6 @@
 package com.example.ringaile.movieapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,7 +9,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -53,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
         //textView.setText(movieTitle2);
 
-        String[] movieTitles = new String[movieList.size()];
+        final String[] movieTitles = new String[movieList.size()];
         String[] imageFiles = new String[movieList.size()];
         String[] movieDescriptions = new String[movieList.size()];
         String[] movieInformations = new String[movieList.size()];
@@ -70,7 +73,21 @@ public class MainActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
-        
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                // TODO Auto-generated method stub
+                String Slecteditem = movieTitles[+position];
+                Movie movie = movieList.get(position);
+                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this, MovieDetailsActivity.class);
+                intent.putExtra("MovieObject", movie);
+                startActivity(intent);
+
+            }
+        });
 
     }
 
