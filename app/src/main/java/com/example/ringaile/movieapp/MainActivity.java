@@ -8,7 +8,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.json.JSONArray;
@@ -56,23 +55,22 @@ public class MainActivity extends AppCompatActivity {
 
         String[] movieTitles = new String[movieList.size()];
         String[] imageFiles = new String[movieList.size()];
+        String[] movieDescriptions = new String[movieList.size()];
+        String[] movieInformations = new String[movieList.size()];
 
         for (int i = 0; i < movieList.size(); i++){
             movieTitles[i] = movieList.get(i).getMovieTitle();
             imageFiles[i] = movieList.get(i).getMovieImageUrl();
+            movieDescriptions[i] = movieList.get(i).getMovieGenre();
+            movieInformations[i] = movieList.get(i).getTheaterName();
         }
 
-        //textView.setText(movieTitles[1]);
 
-
-        //ArrayAdapter adapter = new ArrayAdapter<String>(this,R.layout.activity_main,movieTitles);
+        CustomMovieAdapter adapter=new CustomMovieAdapter(this, movieTitles, imageFiles, movieDescriptions, movieInformations);
         ListView listView = (ListView) findViewById(R.id.listView);
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, movieTitles);
+        listView.setAdapter(adapter);
 
-        listView.setAdapter(new ArrayAdapter<String>(
-                this, R.layout.movie_list,
-                R.id.text1,movieTitles));
-
+        
 
     }
 
