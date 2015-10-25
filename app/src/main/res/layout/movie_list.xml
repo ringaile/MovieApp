@@ -20,31 +20,31 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:text="Movie title"
-            android:id="@+id/textView"
+            android:id="@+id/titleView"
             android:layout_marginLeft="20dp"
             android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:text="description"
-            android:id="@+id/textView2"
-            android:textSize="20dp"
+            android:id="@+id/descriptionView"
+            android:textSize="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:text="information"
-            android:id="@+id/textView3"
+            android:id="@+id/informationView"
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
-            android:textSize="20dp" />
+            android:textSize="10dp" />
     </LinearLayout>
 
 </LinearLayout>

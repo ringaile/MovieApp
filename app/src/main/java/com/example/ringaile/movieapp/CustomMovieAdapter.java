@@ -42,10 +42,10 @@ public class CustomMovieAdapter extends ArrayAdapter<String> {
         LayoutInflater inflater=context.getLayoutInflater();
         View rowView=inflater.inflate(R.layout.movie_list, null, true);
 
-        TextView titleView = (TextView) rowView.findViewById(R.id.textView);
+        TextView titleView = (TextView) rowView.findViewById(R.id.titleView);
         imageView = (ImageView) rowView.findViewById(R.id.imageView);
-        TextView descriptionView = (TextView) rowView.findViewById(R.id.textView2);
-        TextView infoView = (TextView) rowView.findViewById(R.id.textView3);
+        TextView descriptionView = (TextView) rowView.findViewById(R.id.descriptionView);
+        TextView infoView = (TextView) rowView.findViewById(R.id.informationView);
 
         titleView.setText(movieTitles[position]);
 

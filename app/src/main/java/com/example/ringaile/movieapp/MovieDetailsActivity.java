@@ -43,11 +43,11 @@ public class MovieDetailsActivity extends AppCompatActivity {
         Movie movie = (Movie) intent.getSerializableExtra("MovieObject");
 
         TextView cinemaView = (TextView) findViewById(R.id.textView8);
-        TextView titleView = (TextView) findViewById(R.id.textView4);
+        TextView titleView = (TextView) findViewById(R.id.titleMovieView);
         imageView = (ImageView) findViewById(R.id.imageView2);
-        TextView genreView = (TextView) findViewById(R.id.textView5);
-        TextView ratingsView = (TextView) findViewById(R.id.textView6);
-        TextView descriptionView = (TextView) findViewById(R.id.textView7);
+        TextView genreView = (TextView) findViewById(R.id.detailsView);
+        TextView ratingsView = (TextView) findViewById(R.id.actorsView);
+        TextView descriptionView = (TextView) findViewById(R.id.descriptionMovieView);
 
         cinemaView.setText(movie.getMovieDuration() + " " +movie.getTheaterName());
         titleView.setText(movie.getMovieTitle());
