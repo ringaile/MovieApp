@@ -49,8 +49,8 @@ public class CustomMovieAdapter extends ArrayAdapter<String> {
 
         titleView.setText(movieTitles[position]);
 
-        //LoadImageFromURL loadImage = new LoadImageFromURL(movieImages[position]);
-        //loadImage.execute();
+        LoadImageFromURL loadImage = new LoadImageFromURL(movieImages[position]);
+        loadImage.execute();
 
         //imageView.setImageDrawable(Drawable.createFromPath(movieImages[position]));
         descriptionView.setText(movieDescription[position]);

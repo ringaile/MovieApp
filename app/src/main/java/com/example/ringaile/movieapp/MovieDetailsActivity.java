@@ -46,17 +46,17 @@ public class MovieDetailsActivity extends AppCompatActivity {
         TextView titleView = (TextView) findViewById(R.id.titleMovieView);
         imageView = (ImageView) findViewById(R.id.imageView2);
         TextView genreView = (TextView) findViewById(R.id.detailsView);
-        TextView ratingsView = (TextView) findViewById(R.id.actorsView);
+        TextView ratingsView = (TextView) findViewById(R.id.genreView);
         TextView descriptionView = (TextView) findViewById(R.id.descriptionMovieView);
 
         cinemaView.setText(movie.getMovieDuration() + " " +movie.getTheaterName());
         titleView.setText(movie.getMovieTitle());
 
-        //LoadImageFromURL loadImage = new LoadImageFromURL(movie.getMovieImageUrl());
-        //loadImage.execute();
+        LoadImageFromURL loadImage = new LoadImageFromURL(movie.getMovieImageUrl());
+        loadImage.execute();
         //imageView.setImageDrawable(Drawable.createFromPath(movie.getMovieImageUrl());
         genreView.setText(movie.getMovieGenre());
-        ratingsView.setText(movie.getMovieRating());
+        ratingsView.setText("Imdb rating : " + movie.getMovieRating());
         descriptionView.setText(movie.getInfo());
     }
 

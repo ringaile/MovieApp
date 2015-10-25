@@ -20,7 +20,6 @@
                 android:layout_height="wrap_content"
                 android:text="Cinema"
                 android:id="@+id/textView8"
-                android:layout_marginBottom="10dp"
                 android:textSize="18dp"
                 android:textColor="#fc0101" />
 
@@ -55,21 +54,35 @@
                     android:layout_marginLeft="10dp" />
             </TableRow>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Actors"
-                android:id="@+id/actorsView"
-                android:textSize="18dp" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Description"
-                android:id="@+id/descriptionMovieView"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                android:textSize="18dp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Genre"
+                    android:id="@+id/genreView"
+                    android:textSize="18dp"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp" />
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Description"
+                    android:id="@+id/descriptionMovieView"
+                    android:layout_gravity="center_horizontal"
+                    android:textSize="18dp"
+                    android:layout_column="1"
+                    android:layout_marginLeft="10dp" />
+            </TableRow>
 
         </TableLayout>
 

@@ -11,8 +11,7 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:id="@+id/imageView"
-        android:background="#f8baba" />
+        android:id="@+id/imageView" />
 
     <LinearLayout
         android:orientation="vertical"
