@@ -11,19 +11,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    final String jsonFile = "/Users/ringaile/Downloads/MovieApp/app/src/main/java/com/example/ringaile/movieapp/movies.json";
+    final String jsonFile = "movies.txt";
     ArrayList<Movie> movieList =new ArrayList<Movie>();
     //String movieTitle2 = "t";
 
@@ -44,32 +48,29 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //have to implement read file on android
-        //String content = readJsonFIle();
+        //String content = readJsonFIle(jsonFile);
 
         jsonString jstr = new jsonString();
         String content = jstr.getContent();
 
 
-        //TextView textView = (TextView) findViewById(R.id.textView);
-        //textView.setText(content);
-        parseToJsonObjects(content);
 
-        //textView.setText(movieTitle2);
+        parseToJsonObjects(content);
 
         final String[] movieTitles = new String[movieList.size()];
         String[] imageFiles = new String[movieList.size()];
         String[] movieDescriptions = new String[movieList.size()];
-        String[] movieInformations = new String[movieList.size()];
+        String[] movieTimes = new String[movieList.size()];
 
         for (int i = 0; i < movieList.size(); i++){
             movieTitles[i] = movieList.get(i).getMovieTitle();
             imageFiles[i] = movieList.get(i).getMovieImageUrl();
             movieDescriptions[i] = movieList.get(i).getMovieGenre();
-            movieInformations[i] = movieList.get(i).getTheaterName();
+            movieTimes[i] = movieList.get(i).getMovieDuration();
         }
 
 
-        CustomMovieAdapter adapter=new CustomMovieAdapter(this, movieTitles, imageFiles, movieDescriptions, movieInformations);
+        CustomMovieAdapter adapter=new CustomMovieAdapter(this, movieTitles, imageFiles, movieDescriptions, movieTimes);
         ListView listView = (ListView) findViewById(R.id.listView);
         listView.setAdapter(adapter);
 
@@ -79,9 +80,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 // TODO Auto-generated method stub
-                String Slecteditem = movieTitles[+position];
                 Movie movie = movieList.get(position);
-                Toast.makeText(getApplicationContext(), Slecteditem, Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, MovieDetailsActivity.class);
                 intent.putExtra("MovieObject", movie);
                 startActivity(intent);
@@ -122,21 +121,27 @@ public class MainActivity extends AppCompatActivity {
             }
     }
 
-    public String readJsonFIle(){
-        String json = null;
+    public String readJsonFIle(String filePath){
+        File file = new File(filePath);
+        InputStream inputStream = null;
         try {
-            InputStream is = getAssets().open(jsonFile);
-            int size = is.available();
-            byte[] buffer = new byte[size];
-            is.read(buffer);
-            is.close();
-            json = new String(buffer, "UTF-8");
-        } catch (IOException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-        return json;
+            inputStream = new FileInputStream(file);
+            BufferedReader r = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder total = new StringBuilder();
+            String line;
 
+            while ((line = r.readLine()) != null) {
+                total.append(line);
+            }
+
+            return String.valueOf(total);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 
 
