@@ -24,8 +24,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import retrofit.RestAdapter;
-
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Movie> movieList =new ArrayList<Movie>();
@@ -48,11 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         parseToJsonObjects(content);
-
-        RestAdapter restAdapter = new RestAdapter.Builder().setLogLevel(RestAdapter.LogLevel.FULL).setEndpoint(API).build();
-
-        IApiMethods apiService = restAdapter.create(IApiMethods.class);
-
 
 
         final String[] movieTitles = new String[movieList.size()];
